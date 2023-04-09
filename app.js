@@ -10,8 +10,6 @@ const log4js = require('./utils/log4js')
 const router = require('koa-router')()
 const koajwt = require('koa-jwt')
 const util = require('./utils/util')
-const users = require('./routes/users')
-const blog = require('./routes/blog')
 const ai = require('./routes/ai')
 const bodyParser = require('koa-bodyparser')
 // 解决 node koa post太长 request entity too large
