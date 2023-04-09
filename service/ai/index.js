@@ -6,7 +6,7 @@ const axios = require('axios').default;
 const HttpsProxyAgent = require("https-proxy-agent");
 const httpsAgent = new HttpsProxyAgent(`http://127.0.0.1:7890`);
 
-const apikey = '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'
+const apikey = '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'
 
 
 const client = axios.create({
