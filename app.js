@@ -24,7 +24,7 @@ app.use(bodyParser({
 // error handler
 onerror(app)
 //连接数据库
-require('./config/db')
+// require('./config/db')
 
 // middlewares(中间件)
 app.use(bodyparser({ //解析报文
@@ -58,10 +58,10 @@ app.use(async (ctx, next) => {
 //   path: [/^\/api\/users\/login/]
 // }))
 
-router.prefix("/api")
+router.prefix("/aiapi")
 
-router.use(users.routes(), users.allowedMethods())
-router.use(blog.routes(), blog.allowedMethods())
+// router.use(users.routes(), users.allowedMethods())
+// router.use(blog.routes(), blog.allowedMethods())
 router.use(ai.routes(), ai.allowedMethods())
 
 app.use(router.routes(), router.allowedMethods())

@@ -16,4 +16,12 @@ router.get('/getdata', async (ctx) => {
     ctx.body = util.fail(error.message)
   }
 })
+router.get('/text', async (ctx) => {
+  try {
+    const param = ctx.query //获取get请求参数
+    ctx.body = util.success('hello wrod  aws')
+  } catch (error) {
+    ctx.body = util.fail(error.message)
+  }
+})
 module.exports = router

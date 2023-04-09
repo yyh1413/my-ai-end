@@ -6,16 +6,8 @@ const axios = require('axios').default;
 const HttpsProxyAgent = require("https-proxy-agent");
 const httpsAgent = new HttpsProxyAgent(`http://127.0.0.1:7890`);
 
-const apikey = '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'
-const parans = {
-  model: "text-davinci-003",
-  prompt: "给我讲个笑话",
-  max_tokens: 200,
-  top_p: 1,
-  temperature: 0.5,
-  frequency_penalty: 0,
-  presence_penalty: 0,
-}
+const apikey = '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'
+
 
 const client = axios.create({
   proxy: false,
@@ -39,7 +31,15 @@ const client = axios.create({
 
 
 async function getAiData(param) {
-
+  const parans = {
+    model: "text-davinci-003",
+    prompt: param || "给我讲个笑话",
+    max_tokens: 200,
+    top_p: 1,
+    temperature: 0.5,
+    frequency_penalty: 0,
+    presence_penalty: 0,
+  }
   const configuration = new Configuration({
     apiKey: apikey,
   });
@@ -50,6 +50,5 @@ async function getAiData(param) {
   //增加数据
   return completion.data.choices[0].text
 }
-getAiData();
 
 module.exports = { getAiData }
