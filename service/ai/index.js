@@ -6,16 +6,21 @@ const axios = require('axios').default;
 const HttpsProxyAgent = require("https-proxy-agent");
 const httpsAgent = new HttpsProxyAgent(`http://127.0.0.1:7890`);
 
-const apikey = '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'
+const apikey = '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'
 
 
 const client = axios.create({
-  proxy: false,
-  httpsAgent,
   headers: {
     "Authorization": 'Bearer ' + apikey
   }
 })
+// const client = axios.create({
+//   proxy: false,
+//   httpsAgent,
+//   headers: {
+//     "Authorization": 'Bearer ' + apikey
+//   }
+// })
 
 // function getAiData() {
 //   return new Promise(function (resolve, reject) {
@@ -31,9 +36,10 @@ const client = axios.create({
 
 
 async function getAiData(param) {
+  console.log(param);
   const parans = {
     model: "text-davinci-003",
-    prompt: param || "给我讲个笑话",
+    prompt: param.text || "给我讲个笑话",
     max_tokens: 200,
     top_p: 1,
     temperature: 0.5,
@@ -45,7 +51,7 @@ async function getAiData(param) {
   });
   const openai = new OpenAIApi(configuration, undefined, client);
 
-  const completion = await openai.createCompletion(parans);
+  return openai.createCompletion(parans);
   console.log(completion.data.choices[0].text);
   //增加数据
   return completion.data.choices[0].text

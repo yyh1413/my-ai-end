@@ -11,7 +11,8 @@ router.get('/getdata', async (ctx) => {
   try {
     const param = ctx.query //获取get请求参数
     const res = await aiApi.getAiData(param)
-    ctx.body = util.success(res)
+    const va = res.data.choices[0].text
+    ctx.body = util.success(va)
   } catch (error) {
     ctx.body = util.fail(error.message)
   }
